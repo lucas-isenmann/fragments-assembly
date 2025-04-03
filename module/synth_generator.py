@@ -31,8 +31,8 @@ def generate_dna_fragments(dna_length, fragment_length, overlap):
 
 
 if __name__ == "__main__":
-    name = "synth3"
-    seq, fragments = generate_dna_fragments(1000, 100, 10)
+    name = "synth4"
+    seq, fragments = generate_dna_fragments(10000, 100, 50)
     print(seq)
     print(fragments)
 

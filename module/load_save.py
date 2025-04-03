@@ -6,11 +6,13 @@ def read_fragments_fasta(file_path):
     """
     FASTA format
     
+    ```
     >id1
     ATGGTGAAG
     >id2
     GAGGAAGGACG
-
+    ```
+    
     returns
     ["ATGG...", "GAGG..."]
     """

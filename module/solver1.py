@@ -2,7 +2,14 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from fragments_stats import print_stats
+from load_save import read_fragments_fasta
 
+
+
+def print_matrix(m):
+    for line in m:
+        print(line)
 
 
 
@@ -167,21 +174,35 @@ def greedy_max_weight_hamiltonian_path(h):
     path.append(current_node)
     visited[current_node] = True
 
+    first_node = current_node
+
     while len(path) < n:
         # Find the next unvisited node with the highest weight edge
         next_node = -1
         max_weight = -1
+        insertion = "after"
         for j in range(n):
             if not visited[j] and h[current_node][j] > max_weight:
                 next_node = j
                 max_weight = h[current_node][j]
+                insertion = "after"
+            if not visited[j] and h[j][first_node] > max_weight:
+                next_node = j
+                max_weight = h[j][first_node]
+                insertion = "before"
 
         # Add the node to the path and update weight
         if next_node != -1:
-            path.append(next_node)
+            if insertion == "after":
+                path.append(next_node)
+            else:
+                path.insert(0, next_node)
             total_weight += max_weight
             visited[next_node] = True
-            current_node = next_node
+            if insertion == "after":
+                current_node = next_node
+            else:
+                first_node = next_node
 
     return path, total_weight
 
@@ -230,3 +251,29 @@ def find_longest_common_substring(s1, s2):
 
     return s1[end_pos - longest:end_pos]
 
+
+
+
+def reconstruct_dna(fragments):
+    print_stats(fragments)
+    m0 = build_common_prefix_suffix_matrix(fragments)
+    print_matrix(m0)
+    m = build_modified_matrix(m0, 10)
+    print_matrix(m)
+    indset = compute_mis_min_degree(m)
+    print("independent set:")
+    print(indset)
+    print("hmatrix")
+    hm = build_h_matrix(m0, indset, 10)
+    print_matrix(hm)
+    path, weight = greedy_max_weight_hamiltonian_path(hm)
+    print(path)
+    print(weight)
+
+    
+
+
+
+if __name__ == "__main__":
+    fragments = read_fragments_fasta("data/synth3.fasta")
+    reconstruct_dna(fragments)
