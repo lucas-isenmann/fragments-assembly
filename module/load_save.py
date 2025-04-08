@@ -10,7 +10,8 @@ def read_fragments_fasta(file_path):
     >id1
     ATGGTGAAG
     >id2
-    GAGGAAGGACG
+    GAG
+    GAAGGACG
     ```
     
     returns

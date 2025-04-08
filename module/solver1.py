@@ -2,8 +2,8 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from fragments_stats import print_stats
-from load_save import read_fragments_fasta
+from module.fragments_stats import print_stats
+from module.load_save import read_fragments_fasta
 
 
 
