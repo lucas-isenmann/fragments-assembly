@@ -32,3 +32,31 @@ pub fn read_fragments_fasta(file_path: &str) -> Vec<String> {
 
     sequences
 }
+
+
+
+pub fn read_fragments_fastq(file_path: &str) -> Vec<String> {
+    let mut sequences = Vec::<String>::new();
+
+    let file = File::open(file_path).expect("Could not open file");
+    let reader = BufReader::new(file);
+
+    let mut i = 0;
+    for line in reader.lines() {
+        match line {
+            Ok(line) => {
+
+                let line = line.trim();
+                if i % 4 == 1 {
+                    if !line.starts_with("A") && !line.starts_with("C") && !line.starts_with("G") && !line.starts_with("T"){
+                        panic!("Error reading line: {line}");
+                    }
+                    sequences.push(line.to_string());
+                }
+                i += 1;
+            },
+            Err(e) => panic!("Error reading line: {}", e),
+        }
+    }
+    sequences
+}

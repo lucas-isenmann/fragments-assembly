@@ -1,0 +1,57 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                     1.randPath
+# contigs (>= 0 bp)          1         
+# contigs (>= 1000 bp)       1         
+# contigs (>= 5000 bp)       1         
+# contigs (>= 10000 bp)      1         
+# contigs (>= 25000 bp)      1         
+# contigs (>= 50000 bp)      1         
+Total length (>= 0 bp)       99675     
+Total length (>= 1000 bp)    99675     
+Total length (>= 5000 bp)    99675     
+Total length (>= 10000 bp)   99675     
+Total length (>= 25000 bp)   99675     
+Total length (>= 50000 bp)   99675     
+# contigs                    1         
+Largest contig               99675     
+Total length                 99675     
+Reference length             100000    
+GC (%)                       60.11     
+Reference GC (%)             60.10     
+N50                          99675     
+NG50                         99675     
+N90                          99675     
+NG90                         99675     
+auN                          99675.0   
+auNG                         99351.1   
+L50                          1         
+LG50                         1         
+L90                          1         
+LG90                         1         
+# misassemblies              0         
+# misassembled contigs       0         
+Misassembled contigs length  0         
+# local misassemblies        0         
+# scaffold gap ext. mis.     0         
+# scaffold gap loc. mis.     0         
+# unaligned mis. contigs     0         
+# unaligned contigs          0 + 0 part
+Unaligned length             0         
+Genome fraction (%)          99.675    
+Duplication ratio            1.000     
+# N's per 100 kbp            0.00      
+# mismatches per 100 kbp     0.00      
+# indels per 100 kbp         0.00      
+Largest alignment            99675     
+Total aligned length         99675     
+NA50                         99675     
+NGA50                        99675     
+NA90                         99675     
+NGA90                        99675     
+auNA                         99675.0   
+auNGA                        99351.1   
+LA50                         1         
+LGA50                        1         
+LA90                         1         
+LGA90                        1         

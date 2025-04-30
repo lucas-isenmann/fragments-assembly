@@ -1,0 +1,57 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                     5.CANU    
+# contigs (>= 0 bp)          1         
+# contigs (>= 1000 bp)       1         
+# contigs (>= 5000 bp)       1         
+# contigs (>= 10000 bp)      1         
+# contigs (>= 25000 bp)      1         
+# contigs (>= 50000 bp)      1         
+Total length (>= 0 bp)       98188     
+Total length (>= 1000 bp)    98188     
+Total length (>= 5000 bp)    98188     
+Total length (>= 10000 bp)   98188     
+Total length (>= 25000 bp)   98188     
+Total length (>= 50000 bp)   98188     
+# contigs                    1         
+Largest contig               98188     
+Total length                 98188     
+Reference length             100000    
+GC (%)                       59.95     
+Reference GC (%)             59.91     
+N50                          98188     
+NG50                         98188     
+N90                          98188     
+NG90                         98188     
+auN                          98188.0   
+auNG                         96408.8   
+L50                          1         
+LG50                         1         
+L90                          1         
+LG90                         1         
+# misassemblies              0         
+# misassembled contigs       0         
+Misassembled contigs length  0         
+# local misassemblies        0         
+# scaffold gap ext. mis.     0         
+# scaffold gap loc. mis.     0         
+# unaligned mis. contigs     0         
+# unaligned contigs          0 + 0 part
+Unaligned length             0         
+Genome fraction (%)          98.188    
+Duplication ratio            1.000     
+# N's per 100 kbp            0.00      
+# mismatches per 100 kbp     0.00      
+# indels per 100 kbp         0.00      
+Largest alignment            98188     
+Total aligned length         98188     
+NA50                         98188     
+NGA50                        98188     
+NA90                         98188     
+NGA90                        98188     
+auNA                         98188.0   
+auNGA                        96408.8   
+LA50                         1         
+LGA50                        1         
+LA90                         1         
+LGA90                        1         

@@ -1,4 +1,4 @@
-use std::{self, cmp::min};
+use std::{self, cmp::min, collections::HashMap, fs::File, io::{stdout, Write}};
 
 /// Finds the length of the common prefix-suffix between two strings
 ///
@@ -27,17 +27,41 @@ pub fn longest_common_prefix_suffix(prefix: &[u8], suffix: &[u8]) -> usize {
     return 0;
 }
 
+
 /// Constructs a matrix where entry [i][j] represents the length of common
 /// prefix-suffix between sequences[i] and sequences[j]
 pub fn build_common_prefix_suffix_matrix(sequences: &[&[u8]]) -> Vec<Vec<usize>> {
     let n = sequences.len();
     let mut f = vec![vec![0; n]; n];
+
+    // Create a HashMap to store weight frequencies
+    let mut weight_distribution = HashMap::new();
     
     for i in 0..n {
+        print!("\rCreate assembly graph: {i}/{n}");
+        stdout().flush().unwrap();
         for j in 0..n {
             f[i][j] = longest_common_prefix_suffix(sequences[i], sequences[j]);
+            *weight_distribution.entry(f[i][j]).or_insert(0) += 1;
         }
     }
+
+    // Write distribution to file
+    let mut file = match File::create("weight_distribution.txt") {
+        Ok(file) => file,
+        Err(e) => panic!("Could not create file: {}", e),
+    };
+    
+    // Sort weights and write distribution
+    let mut weights: Vec<_> = weight_distribution.keys().cloned().collect();
+    weights.sort();
+    
+    for weight in weights {
+        let count = weight_distribution[&weight];
+        writeln!(file, "{} {}", weight, count).expect("Could not write to file");
+    }
+
+
     f
 }
 
