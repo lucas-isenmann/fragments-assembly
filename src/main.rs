@@ -3,7 +3,7 @@ mod assembly_graph;
 mod solver;
 mod fragments_stats;
 
-use fragments_stats::print_fragments_stats;
+use fragments_stats::{print_fragments_stats, explore_fragments};
 use loader::{read_fragments_fasta, read_fragments_fastq};
 use crate::solver::solver;
 use std::fs;
@@ -35,6 +35,11 @@ fn main() {
             fs::write(&output_file, result_str)
                 .expect("Unable to write result to file");
             println!("Result written to {}", output_file);
+        }
+        Some("explore") => {
+            let fragments = read_fragments_fastq(&args[2]);
+            let fragments: Vec<&[u8]> = fragments.iter().map(|s| s.as_bytes()).collect();
+            explore_fragments(&fragments)
         }
         _ => println!("Usage: program solve <fasta_file>"),
     }
