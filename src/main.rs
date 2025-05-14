@@ -3,7 +3,8 @@ mod assembly_graph;
 mod solver;
 mod fragments_stats;
 
-use fragments_stats::{print_fragments_stats, explore_fragments};
+use assembly_graph::build_noise_overlap_matrix;
+use fragments_stats::{coverage, explore_fragments, print_fragments_stats};
 use loader::{read_fragments_fasta, read_fragments_fastq};
 use crate::solver::solver;
 use std::fs;
@@ -41,6 +42,16 @@ fn main() {
             let fragments: Vec<&[u8]> = fragments.iter().map(|s| s.as_bytes()).collect();
             explore_fragments(&fragments)
         }
-        _ => println!("Usage: program solve <fasta_file>"),
+        Some("coverage") => {
+            let dna_path_file = args.get(2).unwrap();
+            let fragments_path_file = args.get(3).unwrap();
+            coverage(&dna_path_file, &fragments_path_file);
+        }
+        Some("correct") => {
+            let fragments = read_fragments_fastq(&args[2]);
+            let fragments: Vec<&[u8]> = fragments.iter().map(|s| s.as_bytes()).collect();
+            build_noise_overlap_matrix(&fragments, 10);
+        }
+        _ => println!("Usage: program solve <fastq_file> | explore <fastq_file> | coverage <fasta_file> <fastq_file>"),
     }
 }
